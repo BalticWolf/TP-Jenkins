@@ -1,1 +1,83 @@
-// TODO
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+apply plugin: 'jdepend'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'junit:junit:4.12'
+}
+
+findbugs {
+    ignoreFailures = true
+    findbugsTest.enabled = false
+    effort = "max"
+}
+
+pmd {
+    ignoreFailures = true
+    pmdTest.enabled = false
+    ruleSets = [
+        'java-basic',
+        'java-braces',
+        'java-clone',
+        'java-codesize',
+        'java-comments',
+        'java-controversial',
+        'java-coupling',
+        'java-design',
+        'java-empty',
+        'java-finalizers',
+        'java-imports',
+        'java-optimizations',
+        'java-strictexception',
+        'java-strings',
+        'java-typeresolution',
+        'java-unnecessary',
+        'java-unusedcode'
+    ]
+}
+
+checkstyle {
+    ignoreFailures = true
+    checkstyleTest.enabled = false
+}
+
+jdepend {
+    ignoreFailures = true
+    jdependTest.enabled = false
+}
+
+task cpdMain(dependsOn: 'pmdMain') {
+    ext.ignoreFailures = true
+
+    doLast {
+        File outDir = new File(reporting.baseDir, 'cpd/')
+        // Make sure the output dir exists to prevent a ReportException
+        outDir.mkdirs()
+
+        ant.taskdef(
+            name: 'cpd',
+            classname: 'net.sourceforge.pmd.cpd.CPDTask',
+            classpath: configurations.pmd.asPath)
+
+        ant.cpd(
+            minimumTokenCount: '100',
+            format: 'xml',
+            outputFile: new File(outDir , 'main.xml')) {
+                fileset(dir: projectDir.getPath()) {
+                    sourceSets.main.java.each { sourceDir ->
+                        include(name: project.relativePath(sourceDir.getPath()))
+                    }
+                }
+        }
+    }
+}
+check.dependsOn cpdMain
