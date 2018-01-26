@@ -18,8 +18,8 @@ public final class KeyboardUtils {
      * @param displayAsk input given by user
      * @return representation of string input
      */
-    public static String readFromKeyboard(String displayAsk) {
-        Scanner keyboard = new Scanner(System.in);
+    public static String readFromKeyboard(final String displayAsk) {
+        final Scanner keyboard = new Scanner(System.in);
 
         System.out.println(displayAsk);
 

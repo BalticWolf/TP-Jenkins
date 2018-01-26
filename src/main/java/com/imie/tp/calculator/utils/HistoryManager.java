@@ -11,7 +11,7 @@ public class HistoryManager {
     /**
      * History container.
      */
-    private List<String> latestOperations;
+    private final List<String> latestOperations;
 
     /**
      * HistoryManager constructor.
@@ -23,7 +23,7 @@ public class HistoryManager {
     /**
      * @param operation string representation to add to history
      */
-    public void addOperation(String operation) {
+    public void addOperation(final String operation) {
         this.latestOperations.add(operation);
     }
 

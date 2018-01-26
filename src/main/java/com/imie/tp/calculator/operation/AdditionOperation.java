@@ -5,7 +5,10 @@ package com.imie.tp.calculator.operation;
  */
 public class AdditionOperation extends OperationCommandBase {
 
-    public AdditionOperation(float operand) {
+    /**
+     * @param operand first operand
+     */
+    public AdditionOperation(final float operand) {
         super(operand);
     }
 
@@ -14,7 +17,7 @@ public class AdditionOperation extends OperationCommandBase {
      * @return sum of current and second operands
      */
     @Override
-    public float make(float value) {
+    public float make(final float value) {
         return this.getCurrentValue() + value;
     }
 

@@ -20,9 +20,9 @@ public final class Application {
      * Main application.
      * @param args application parameters
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
-        HistoryManager historyManager = new HistoryManager();
+        final HistoryManager historyManager = new HistoryManager();
         String operation; // string representation of an operation
         int input; // store input from keyboard
         float operandA;
@@ -33,7 +33,7 @@ public final class Application {
             switch (input) {
             case 1:
                 operandA = Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value a: "));
-                AdditionOperation addition = new AdditionOperation(operandA);
+                final AdditionOperation addition = new AdditionOperation(operandA);
 
                 operandB = Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value b: "));
                 result = addition.make(operandB);
