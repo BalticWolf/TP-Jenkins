@@ -1,6 +1,7 @@
 package com.imie.tp.calculator;
 
 import com.imie.tp.calculator.operation.AdditionOperation;
+import com.imie.tp.calculator.utils.HistoryManager;
 import com.imie.tp.calculator.utils.KeyboardUtils;
 
 public class Application {
@@ -30,6 +31,8 @@ public class Application {
         // If enter 9 => Quit application
 
         //TODO
+        HistoryManager historyManager = new HistoryManager();
+        String operation;
         int input;
         float operandA;
         float operandB;
@@ -44,11 +47,16 @@ public class Application {
                     operandB = Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value b: "));
                     result = addition.make(operandB);
 
-                    System.out.println(operandA + " + " + operandB + " = " + result);
+                    operation = operandA + " + " + operandB + " = " + result;
+                    System.out.println(operation);
+                    historyManager.addOperation(operation);
                     break;
 //                case 2:
 //                    // TODO
 //                    break;
+                case 5:
+                    historyManager.showHistory();
+                    break;
                 default:
                     System.out.println("default");
                     break;
