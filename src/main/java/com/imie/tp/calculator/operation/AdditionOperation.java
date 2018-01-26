@@ -2,6 +2,10 @@ package com.imie.tp.calculator.operation;
 
 public class AdditionOperation extends OperationCommandBase {
 
+    public AdditionOperation(float operand) {
+        super(operand);
+    }
+
     @Override
     public void make(float value) {
         // TODO Auto-generated method stub
@@ -12,5 +16,4 @@ public class AdditionOperation extends OperationCommandBase {
         // TODO Auto-generated method stub
         return 0;
     }
-
 }
