@@ -7,13 +7,12 @@ public class AdditionOperation extends OperationCommandBase {
     }
 
     @Override
-    public void make(float value) {
-        // TODO Auto-generated method stub
-
+    public float make(float value) {
+        return this.getCurrentValue() + value;
     }
 
+    @Override
     public float getCurrentValue() {
-        // TODO Auto-generated method stub
-        return 0;
+        return AdditionOperation.super.getCurrentValue();
     }
 }
