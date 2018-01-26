@@ -1,5 +1,6 @@
 package com.imie.tp.calculator;
 
+import com.imie.tp.calculator.operation.AdditionOperation;
 import com.imie.tp.calculator.utils.KeyboardUtils;
 
 public class Application {
@@ -30,18 +31,25 @@ public class Application {
 
         //TODO
         int input;
+        float operandA;
+        float operandB;
+        float result;
         do {
-            input = Integer.parseInt(KeyboardUtils.readFromKeyboard("Type of Operation:"));
+            input = Integer.parseInt(KeyboardUtils.readFromKeyboard("Type of Operation: "));
             switch (input) {
                 case 1:
-                    // TODO
-                    System.out.println("Addition");
+                    operandA = Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value a: "));
+                    AdditionOperation addition = new AdditionOperation(operandA);
+
+                    operandB = Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value b: "));
+                    result = addition.make(operandB);
+
+                    System.out.println(operandA + " + " + operandB + " = " + result);
                     break;
 //                case 2:
 //                    // TODO
 //                    break;
                 default:
-//                  // TODO
                     System.out.println("default");
                     break;
             }
