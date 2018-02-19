@@ -25,7 +25,6 @@ public class MultiplicationOperationTest {
         assertNotNull(this.multiplication);
         assertEquals(84, this.multiplication.make(2), 0);
         assertEquals(-84, this.multiplication.make(-2), 0);
-        assertEquals(21, this.multiplication.make(1/2), 0);
         assertEquals(0, this.multiplication.make(0), 0);
     }
 
