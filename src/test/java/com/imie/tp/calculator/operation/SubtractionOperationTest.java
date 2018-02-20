@@ -25,6 +25,7 @@ public class SubtractionOperationTest {
         assertNotNull(this.subtraction);
         assertEquals(37, this.subtraction.make(5), 0);
         assertEquals(47, this.subtraction.make(-5), 0);
+        assertEquals(41.5F, this.subtraction.make(0.5F), 0);
     }
 
     @Test

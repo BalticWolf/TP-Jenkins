@@ -22,6 +22,7 @@ public class AdditionOperationTest {
         assertNotNull(this.addition);
         assertEquals(47, this.addition.make(5), 0);
         assertEquals(37, this.addition.make(-5), 0);
+        assertEquals(42.2F, this.addition.make(0.2F), 0);
     }
 
     @org.junit.Test

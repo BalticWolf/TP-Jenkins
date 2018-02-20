@@ -25,6 +25,7 @@ public class DivisionOperationTest {
         assertNotNull(this.division);
         assertEquals(21, this.division.make(2), 0);
         assertEquals(-21, this.division.make(-2), 0);
+        assertEquals(84, this.division.make(0.5F), 0);
         assertEquals(Integer.MAX_VALUE, this.division.make(0), 0);
     }
 
