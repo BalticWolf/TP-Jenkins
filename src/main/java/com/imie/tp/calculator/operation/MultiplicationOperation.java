@@ -26,6 +26,6 @@ public class MultiplicationOperation extends OperationCommandBase {
      */
     @Override
     public float getCurrentValue() {
-        return MultiplicationOperation.super.getCurrentValue();
+        return super.getCurrentValue();
     }
 }

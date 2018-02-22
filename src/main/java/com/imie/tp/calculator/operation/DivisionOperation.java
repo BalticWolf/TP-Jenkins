@@ -32,6 +32,6 @@ public class DivisionOperation extends OperationCommandBase {
      */
     @Override
     public float getCurrentValue() {
-        return DivisionOperation.super.getCurrentValue();
+        return super.getCurrentValue();
     }
 }

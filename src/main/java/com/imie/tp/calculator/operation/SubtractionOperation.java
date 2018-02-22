@@ -26,6 +26,6 @@ public class SubtractionOperation extends OperationCommandBase {
      */
     @Override
     public float getCurrentValue() {
-        return SubtractionOperation.super.getCurrentValue();
+        return super.getCurrentValue();
     }
 }

@@ -28,7 +28,7 @@ public final class Application {
         final HistoryManager historyManager = new HistoryManager();
         int input; // store input from keyboard
 
-        String operation = "";
+        String operation = null;
 
         do {
             input = Integer.parseInt(KeyboardUtils.readFromKeyboard("Type of Operation: "));
@@ -52,43 +52,72 @@ public final class Application {
                 System.out.println("Wrong item: enter 1 to 5 for operation, or 9 to exit");
                 break;
             }
-            if (operation.length() > 0) {
+            if (operation != null) {
                 System.out.println(operation);
                 historyManager.addOperation(operation);
+                operation = null;
             }
-            operation = "";
         } while (input != 9);
     }
 
-    private static String handleAddition(final float operandA, final float operandB) {
+    /**
+     * Create, perform and return the performed Addition.
+     * @param operandA first operand
+     * @param operandB second operand
+     * @return string representation of the performed operation
+     */
+    public static String handleAddition(final float operandA, final float operandB) {
 
         final AdditionOperation addition = new AdditionOperation(operandA);
 
         return operandA + " + " + operandB + " = " + addition.make(operandB);
     }
 
-    private static String handleSubtraction(final float operandA, final float operandB) {
+    /**
+     * Create, perform and return the performed Subtraction.
+     * @param operandA first operand
+     * @param operandB second operand
+     * @return string representation of the performed operation
+     */
+    public static String handleSubtraction(final float operandA, final float operandB) {
 
         final SubtractionOperation sub = new SubtractionOperation(operandA);
 
         return operandA + " - " + operandB + " = " + sub.make(operandB);
     }
 
-    private static String handleMultiplication(final float operandA, final float operandB) {
+    /**
+     * Create, perform and return the performed Multiplication.
+     * @param operandA first operand
+     * @param operandB second operand
+     * @return string representation of the performed operation
+     */
+    public static String handleMultiplication(final float operandA, final float operandB) {
 
         final MultiplicationOperation multiplication = new MultiplicationOperation(operandA);
 
         return operandA + " x " + operandB + " = " + multiplication.make(operandB);
     }
 
-    private static String handleDivision(final float operandA, final float operandB) {
+    /**
+     * Create, perform and return the performed Division.
+     * @param operandA first operand
+     * @param operandB second operand
+     * @return string representation of the performed operation
+     */
+    public static String handleDivision(final float operandA, final float operandB) {
 
         final DivisionOperation multiplication = new DivisionOperation(operandA);
 
         return operandA + " / " + operandB + " = " + multiplication.make(operandB);
     }
 
-    private static float promptOperand(String member) {
+    /**
+     * Prompt for an operand input.
+     * @param member operand
+     * @return parsed input
+     */
+    private static float promptOperand(final String member) {
         return Float.parseFloat(KeyboardUtils.readFromKeyboard("Enter Value " + member + ": "));
     }
 }
